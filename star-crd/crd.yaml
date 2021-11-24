@@ -10,6 +10,8 @@ spec:
     singular: star
     shortNames:
     - st
+    categories:
+    - all
   scope: Namespaced
   subresources:
     status: {}
