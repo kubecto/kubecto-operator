@@ -8,6 +8,8 @@ spec:
     kind: Star
     plural: stars
     singular: star
+    shortNames:
+    - st
   scope: Namespaced
   subresources:
     status: {}
