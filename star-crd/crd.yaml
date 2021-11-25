@@ -11,7 +11,7 @@ spec:
     shortNames:
     - st
     categories:
-    - all
+    - all   
   scope: Namespaced
   subresources:
     status: {}
@@ -20,3 +20,18 @@ spec:
     - name: v1alpha1
       served: true
       storage: true
+  additionalPrinterColumns:
+  - name: Schedule
+    type: string
+    description: schedule the program
+    JSONPath: .spec.schedule
+  - name: Command
+    type: string
+    description: The command
+    JSONPath: .spec.command
+  - name: Age
+    type: date
+    JSONPath: .metadata.creationTimestamp
+  - name: Phase
+    type: string
+    JSONPath: .spec.phase
