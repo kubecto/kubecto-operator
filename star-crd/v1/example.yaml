@@ -1,0 +1,10 @@
+apiVersion: cnstar.kubecto-kubernetes.info/v1
+kind: Star
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: example-star
+spec:
+  schedule: "2021-11-17T10:12:00Z"
+  command: "echo Kubernetes native star!"
+  phase: "Running"

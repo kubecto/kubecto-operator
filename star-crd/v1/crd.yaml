@@ -1,0 +1,49 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: stars.cnstar.kubecto-kubernetes.info
+spec:
+  group: cnstar.kubecto-kubernetes.info
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                schedule:
+                  type: string
+                command:
+                  type: string
+                phase:
+                  type: string
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+      - name: Schedule
+        type: string
+        description: schedule the program
+        jsonPath: .spec.schedule
+      - name: Command
+        type: string
+        description: The command
+        jsonPath: .spec.command
+      - name: Age
+        type: date
+        jsonPath: .metadata.creationTimestamp
+      - name: Phase
+        type: string
+        jsonPath: .spec.phase
+  scope: Namespaced
+  names:
+    plural: stars
+    singular: star
+    kind: Star
+    shortNames:
+    - st
+    categories:
+    - all
