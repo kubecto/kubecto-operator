@@ -42,7 +42,7 @@ spec:
         type: date
         jsonPath: .metadata.creationTimestamp
       - name: Replicas
-        type: string
+        type: integer
         jsonPath: .spec.replicas
       - name: Phase
         type: string
