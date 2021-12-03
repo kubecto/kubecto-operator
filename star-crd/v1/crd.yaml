@@ -19,10 +19,16 @@ spec:
                   type: string
                 command:
                   type: string
+                replicas:
+                  type: integer
                 phase:
                   type: string
       subresources:
         status: {}
+        scale:
+          specReplicasPath: .spec.replicas
+          statusReplicasPath: .status.replicas
+          labelSelectorPath: .status.labelSelector
       additionalPrinterColumns:
       - name: Schedule
         type: string
@@ -35,6 +41,9 @@ spec:
       - name: Age
         type: date
         jsonPath: .metadata.creationTimestamp
+      - name: Replicas
+        type: string
+        jsonPath: .spec.replicas
       - name: Phase
         type: string
         jsonPath: .spec.phase

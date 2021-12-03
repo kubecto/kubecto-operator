@@ -7,4 +7,5 @@ metadata:
 spec:
   schedule: "2021-11-17T10:12:00Z"
   command: "echo Kubernetes native star!"
+  replicas: 3
   phase: "Running"
