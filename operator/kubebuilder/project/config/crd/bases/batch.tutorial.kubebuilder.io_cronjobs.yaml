@@ -18,7 +18,7 @@ spec:
   - name: v1
     schema:
       openAPIV3Schema:
-        description: CronJob is the Schema for the cronjobs API
+        description: CronJob是cronjobs API的架构
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -33,28 +33,23 @@ spec:
           metadata:
             type: object
           spec:
-            description: CronJobSpec defines the desired state of CronJob
+            description: CronJobSpec定义了CronJob的期望状态
             properties:
               concurrencyPolicy:
-                description: 'Specifies how to treat concurrent executions of a Job.
-                  Valid values are: - "Allow" (default): allows CronJobs to run concurrently;
-                  - "Forbid": forbids concurrent runs, skipping next run if previous
-                  run hasn''t finished yet; - "Replace": cancels currently running
-                  job and replaces it with a new one'
+                description: '指定如何处理Job的并发执行。 有效的值是: - "Allow" (default):允许CronJobs并行运行;
+                  - "Forbid":禁止并发运行，如果上一个运行还没有完成，则跳过下一个运行; - "Replace":取消当前运行的作业，并替换为新的作业'
                 enum:
                 - Allow
                 - Forbid
                 - Replace
                 type: string
               failedJobsHistoryLimit:
-                description: The number of failed finished jobs to retain. This is
-                  a pointer to distinguish between explicit zero and not specified.
+                description: 保留失败的已完成任务数。 这是一个指针，区分显式零和未指定。
                 format: int32
                 minimum: 0
                 type: integer
               jobTemplate:
-                description: Specifies the job that will be created when executing
-                  a CronJob.
+                description: 执行CronJob时要创建的job。
                 properties:
                   metadata:
                     description: 'Standard object''s metadata of the jobs created
@@ -8023,36 +8018,31 @@ spec:
                     type: object
                 type: object
               schedule:
-                description: The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+                description: Cron格式的时间表，请参见https://en.wikipedia.org/wiki/Cron。
                 minLength: 0
                 type: string
               startingDeadlineSeconds:
-                description: Optional deadline in seconds for starting the job if
-                  it misses scheduled time for any reason.  Missed jobs executions
-                  will be counted as failed ones.
+                description: 可选的截止日期，单位为秒 时间。未执行的任务将被算作失败的任务。
                 format: int64
                 minimum: 0
                 type: integer
               successfulJobsHistoryLimit:
-                description: The number of successful finished jobs to retain. This
-                  is a pointer to distinguish between explicit zero and not specified.
+                description: 保留成功完成的工作的数量。 这是一个指针，区分显式零和未指定。
                 format: int32
                 minimum: 0
                 type: integer
               suspend:
-                description: This flag tells the controller to suspend subsequent
-                  executions, it does not apply to already started executions.  Defaults
-                  to false.
+                description: 这个标志告诉控制器暂停后续的执行，它做到了 不应用于已经开始的执行。默认值为false。
                 type: boolean
             required:
             - jobTemplate
             - schedule
             type: object
           status:
-            description: CronJobStatus defines the observed state of CronJob
+            description: CronJobStatus定义了CronJob的观察状态
             properties:
               active:
-                description: A list of pointers to currently running jobs.
+                description: 指向当前运行的作业的指针列表。
                 items:
                   description: 'ObjectReference contains enough information to let
                     you inspect or modify the referred object. --- New uses of this
@@ -8115,8 +8105,7 @@ spec:
                   type: object
                 type: array
               lastScheduleTime:
-                description: Information when was the last time the job was successfully
-                  scheduled.
+                description: 上次任务调度成功的时间。
                 format: date-time
                 type: string
             type: object
